@@ -1,13 +1,7 @@
-#include <iostream>
-#include <ourhdr.h>
-#include <errno.h>
-using namespace std;
-
-int main(int argc,char* argv[])
+void Sem_post(sem_t* sem)
 {
-	fprintf(stderr, "EACCES:%s\n", strerror(EACCES));
-	errno = ENOENT;
-	perror(argv[0]);
-
-	return 0;
+ if(sem_post(sem) == -1)
+ {
+  err_sys("sem_post error");
+ }
 }
